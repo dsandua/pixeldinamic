@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased text-gray-900;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-5px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 
+      -5px 5px 10px rgba(0, 0, 0, 0.1),
+      -10px 10px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 
+      -5px 5px 10px rgba(0, 0, 0, 0.3),
+      -10px 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@layer utilities {
+  .masonry {
+    column-count: 3;
+    column-gap: 1.5rem;
+  }
+  
+  .masonry > div {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 1024px) {
+    .masonry {
+      column-count: 2;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .masonry {
+      column-count: 1;
+    }
+  }
+}
